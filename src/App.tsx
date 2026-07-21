@@ -9,6 +9,7 @@ import Gallery from './components/Gallery'
 import Location from './components/Location'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { business } from './data/business'
 
 function App() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -20,7 +21,7 @@ function App() {
   return <><a className="skip-link" href="#conteudo">Pular para o conteúdo</a><Header />
     <main id="conteudo"><Hero /><About /><Services /><Differentials /><Reviews /><Gallery onOpen={setLightbox} /><Location /><Contact /></main>
     <Footer />
-    {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de imagem" onClick={() => setLightbox(null)}><button className="lightbox-close" aria-label="Fechar galeria" onClick={() => setLightbox(null)}>×</button><p>Fotografias públicas do escritório serão exibidas aqui após a disponibilização dos arquivos originais.</p></div>}
+    {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de imagem" onClick={() => setLightbox(null)}><button className="lightbox-close" aria-label="Fechar galeria" onClick={() => setLightbox(null)}>×</button><img src={business.photos[lightbox].src} alt={business.photos[lightbox].alt} onClick={event => event.stopPropagation()} /></div>}
   </>
 }
 
